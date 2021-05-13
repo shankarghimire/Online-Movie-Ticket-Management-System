@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Movie-Ticket Application::User-Ticket-Confirmation</title>
+<link rel="stylesheet" href="../..static/css/main.css" th:href="@{/css/main.css}" />
+<script src="../../static/js/main.js" th:src="@{/js/user-confirm-ticket.js}" defer="defer"></script>
+</head>
+<body>
+
+	<div class="container">
+		<header id="header-info">
+			<div th:replace="fragments/header.html::header"></div>
+		</header>
+		<nav  th:replace="fragments/menu.html::menu" >			
+		</nav>
+		
+		<section class="main-section">
+		<!-- Start Ticket Div -->
+			<div  class="ticket ticket-box">
+			<!-- <h2 th:text="${session.name}"></h2> -->
+				<h2>You are requesting ticket for the following:</h2>
+				<div class="order-info">
+					<p>Movie Name: <span th:text="*{currentTicket.movieName}"></span></p>
+					<p>Show Time :<span th:text="*{currentTicket.showTime}"></span></p>
+					<p>Show Date : <span th:text="*{currentTicket.showDate}"></span></p>
+					<p>Theater Name: <span th:text="*{currentTicket.theaterName}"></span></p>
+				</div>
+				<h3> Please select the Seat Number and Price </h3>
+				
+				<form id="confirm-ticket-form" action="" th:action="@{/user/process-ticket}" th:object="${ticket}" method="post">
+				<div id="error"></div>
+						 
+					<div class="ticket ticket-elements">
+						<label class="ticket ticket-element" for="seat-number">Select Seat Number</label>
+						<select id="seat-number" class="ticket ticket-element" th:field="*{seatNo}">
+							<option value="">-Select Seat-</option>
+							<option th:each="s: ${availableSeats}" th:value="${s}" th:text="${s}"></option>
+						</select>
+					</div> <!-- End of Seat-number div -->
+									
+					
+					<!-- Start of Ticket-Category div -->
+					<div class="ticket ticket-elements">
+						<label class="ticket ticket-element" for="seat-number">Ticket Category</label>
+						<select id="ticket-category" class="ticket ticket-element" th:field="*{ticketCategory}">
+							<option value="">-Select Category-</option>
+							<option th:each="tc: ${ticketCategory}" th:value="${tc}" th:text="${tc}"></option>
+						</select>
+					</div> <!-- End of Ticket Category div -->
+					
+						<!-- Price -->
+					<div class="ticket ticket-elements">
+						<label class="ticket ticket-element" for="price">Price</label>
+						<input type="number" id="price" name="price"  class="ticket ticket-element" th:field="*{price}" />
+					</div> <!-- End of price div-->
+					
+					<!-- Start of button holder div -->
+					<div>
+						<input type="submit" value="Confirm Ticket" id="btn-confirm-ticket"/>
+						<input type="reset" value="Reset" />
+					</div>
+					<!-- End of Button div -->
+				</form>
+			</div>
+			<!-- End of Ticket Div -->
+
+			<!-- Starting Seat and other info Div -->
+			<div class="class-info">
+				<div class="seat-box">
+					<h2>Available Seats</h2>
+					<hr style="width:40%;" />
+					<div>
+						<div th:each="seat: ${availableSeats}"
+							class="class-available-seats">
+							<div class="class-seat">
+								<span th:text="${seat}"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End os Seat Div -->
+				 
+				<div class="movie-and-ticket-info">
+					<h3>Available Movies &amp; Show Time</h3>
+					<ul>
+						<li>Titanic- 8:30AM </li>
+						<li>Avatar- 12:30PM</li>
+						<li>Parba- 5:30PM</li>
+					</ul>
+					<h3>Ticket Category &amp; Price</h3>
+					<ul>
+						<li>General Admission:&nbsp; $15:00</li>
+						<li>Sheridan College Students: &nbsp; $10:00</li>
+						<li>PROG 32758 Students: &nbsp; $8:00</li>
+						<li>Senior Citezen: &nbsp; $5:00</li>
+						<li>Children: &nbsp; $5:00</li>
+					</ul>
+				</div>
+				 
+			</div>
+			<!-- End of class-info Div -->
+		</section> <!-- End of the section of Ticket Order -->
+
+	</div>
+		<footer id="footer-info">
+			<div th:replace="fragments/footer.html::footer"></div>
+		</footer>
+</body>
+</html>

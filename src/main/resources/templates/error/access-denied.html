@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Movie-Ticket Application::Home</title>
+<link rel="stylesheet" href="" th:href="@{css/main.css}" />
+</head>
+<body>
+	<div class="container">
+		<header id="header-info">
+			<div th:replace="fragments/header.html::header"></div>
+		</header>
+		<nav th:replace="fragments/menu.html::menu"></nav>
+		<main>
+			<div class="access-denied-message">
+				<h2>You DO NOT have permission to this resources!!!</h2>
+			</div>
+
+
+		</main>
+
+	</div>
+		<footer id="footer-info">
+			<div th:replace="fragments/footer.html::footer"></div>
+		</footer>
+
+</body>
+</html>

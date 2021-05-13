@@ -1,0 +1,389 @@
+@charset "ISO-8859-1";
+
+*{
+	
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+body{
+	background-color: #d7d9d9;
+	width: 100%;
+	height: 100%;
+}
+
+main{
+	height: 80%;
+	/*border: 2px solid blue;*/
+}
+
+nav ul{
+	list-style-type: none;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	margin: 5px 0;
+}
+
+a{
+	text-decoration: none;
+}
+
+nav ul a{
+	text-decoration: none;
+	padding: 3px 10px;
+	margin: 2px;
+	font-size: 1.2rem;
+	border-left: 1px olid gray;
+	border-right: 1px olid gray;
+	text-align: center;
+	/*border: 1px solid red;*/
+}
+
+nav ul a:hover{
+	/*background-color: cyan;*/
+
+	border-bottom: 2px solid #0000ff;
+	padding-bottom: 0;
+	color: #0000ff;
+	 width: 200px;
+}
+
+.menu-item{
+ 	flex-basis: 200px;
+ 	/*background-color: #d4d4d4;*/
+}
+
+.container{
+	width: 80%;
+	min-height: 100vh;
+	margin: 0 auto;
+	background-color: #ffffff;
+	padding: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	/*border: 2px solid blue;*/
+}
+
+footer{
+	width: 80%;
+	margin: 0 auto;
+}
+.hr-footer{
+	width: 100%;
+	margin: 0 auto;
+}
+/*
+#header-info{
+	border: 1px solid blue;
+}*/
+
+#header-title{
+	width: 70%;
+	/*border: 2px solid green;*/
+	text-align: center;
+}
+.title-heading{
+	color: #0000ff;
+	font-size: 3rem;
+	text-shadow: 3px 3px 1px #00ff00;
+}
+
+.header-class{
+	display:flex;
+	border-bottom: 1px solid gray;
+	align-items: center;
+}
+
+.login-info{
+	padding: 15px 5px;
+	align-items: right;
+	display: flex;
+	/*border: 1px solid red;*/
+	
+}
+
+.alert{
+	color:#ff0000;
+	font-weight:bold;
+}
+
+
+.footer-content{
+	text-align: center;
+	font-size: smaller;
+}
+.main-content{
+	text-align:center;
+}
+
+input[type=submit], input[type=reset]{
+
+	margin: 5px;
+	width: 8em;
+	height: 2.0em;
+	font-size: 0.8rem;
+	
+	
+}
+
+
+.image{
+	border-radius: 5px;
+}
+
+/* form related css  */
+.data-entry-form{
+	width: 50%;
+	margin: 10px auto;
+	border: 2px solid lightgray;
+	padding: 10px;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	
+}
+/*.form-header{
+	width: 50%;
+	margin: 0;
+}*/
+.btn-holder{
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.agreement-holder{
+	
+	display: flex;
+	
+}
+/*
+label{
+	display:block;
+	width: 100%;	
+	height: 30px;
+	margin: 0;
+	padding: 0;
+	margin-bottom: -10px;
+}*/
+input[type=text], input[type=password]{
+	
+	width: 100%;	
+	height: 30px;
+	border-radius: 5px;
+	margin:0 0 2px 0;
+	padding: 2px 0;
+}
+select{
+	display:block;
+	width: 100%;
+	height: 30px;
+	border-radius: 5px;
+}
+.mandatory-data{
+	color: #ff0000;
+	font-weight: bold;
+	display: inline;
+}
+
+.data-entry-btn{
+	width: 100px;
+	height: 30px;
+	font-weight: bold;
+}
+
+
+/*
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ */
+/* access-denied.html  */
+.access-denied-message{
+	color: #ff0000;
+	font-weight: bolder;
+	text-align: center;
+	padding: 20px;
+}
+
+
+
+/*
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ */
+ 
+/*Movie.html page*/
+.all-movie{
+	display: flex;
+	padding: 5px;
+	flex-wrap: wrap;
+	
+}
+.movie-details{
+	display: flex;
+	flex-direction: column;
+	width: 250px;
+	margin: 15px;
+	padding: 5px;
+	text-align: center;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.movie-names{
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+}
+
+/*
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ Purchase-ticket.html
+ */
+ 
+ .main-section{
+ display: flex;
+ justify-content: center;
+ 
+ }
+ 
+.ticket{
+	display: block;
+}
+
+.ticket-box{
+	border: 2px solid gray;
+	width: 45%;
+	padding: 10px;
+	border-radius: 5px;
+}
+#ticket-form{
+	width: 60%;
+	border: 0px solid blue;
+}
+
+.ticket-element{
+	width: 100%;
+	height: 30px;
+	border-radius: 5px;
+}
+
+#ticket-form label{
+	margin-top: 3px;
+	margin-bottom: -10px;
+	font-weight: bold;
+}
+.class-info{
+	width: 45%;
+	margin-left: 40px;
+	border: 2px solid gray;
+	border-radius: 5px;
+}
+.seat-box{
+	border-bottom: 2px solid gray;
+}
+
+.class-available-seats{
+	display: inline-flex;
+	flex-wrap: wrap;
+	
+}
+
+.class-seat{
+	margin: 5px;
+	border: 1px solid green;
+	background-color: #00ff00;
+	color:#ffffff;
+	font-weight: bolder;
+	width: 40px;
+	height: 40px;
+	border-radius: 4px;
+	text-align:center;
+	padding-top: 8px;
+}
+.movie-and-ticket-info{
+	margin-left: 5px;
+}
+
+.movie-and-ticket-info ul{
+	margin-left: 25px;
+}
+
+.order-info{
+	border: 1px solid gray;
+}
+
+.lnk-order-ticket{
+	background-color: #0000ff;
+	color: #ffffff;
+	font-weight: bold;
+	Width: 35px;
+	padding: 5px;
+	margin: 5px;
+	border: 2px solid #00ff00;
+}
+
+
+/* Admin Dash Board Pge  */
+.main-admin-dashboard{
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	/*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+	
+	/*border: 2px solid green;*/
+}
+.admin-sidebar{
+	width: 20%;
+	min-height: 100%;
+	/* position: fixed; */
+	background-color: #ffffff;
+	padding-top: 45px;
+	border-right: 2px solid gray;
+	/*border: 1px solid red;*/
+	/*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+
+}
+
+.admin-sidebar a{
+	text-decoration: none;
+	display: block;
+	width: 100%;
+	padding: 10px 25px;
+	color: gray;
+	font-size: 1.2 rem;
+
+}
+
+.admin-main-content .divider{
+	height : 0.5px;
+	width: 100%;
+	background-color: #e2e2e2;
+	margin-top: 10px;
+}
+
+.admin-sidebar a:hover{
+	color: #e2e2e2;
+}
+
+.admin-main-content{
+	width: 50%;
+	padding-left: 10px;
+	/*border: 2px solid blue;*/
+}
+
+.form-container{
+	padding: 10px;
+	border: 2px solid gray;
+	border-radius: 5px;
+	/*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+}
+
+.href-link{
+	color: #ffffff;
+	font-weight: bold;
+	padding: 10px;
+	border: 1px solid #000000;
+	background-color: #0000ff;
+	height: 0px;
+	margin: 0px;
+}

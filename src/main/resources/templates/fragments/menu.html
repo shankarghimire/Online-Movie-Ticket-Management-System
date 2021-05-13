@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<nav th:fragment="menu" id="nav-info">
+		<ul>
+			<li class="menu-item"> <a href="" th:href="@{/}">Home</a></li>
+			<li class="menu-item"> <a href="" th:href="@{/movie}">Movies</a></li>
+			<li class="menu-item"> <a href="" th:href="@{/order-ticket}">Order Tickets</a></li>
+			<li class="menu-item"> <a href="" th:href="@{/admin/movie-config}">Admin Resources</a></li>
+			<li class="menu-item"> <a href="" th:href="@{/user/dashboard}">User Resources</a></li>
+			<!-- 
+			<li class="menu-item"> <a href="" th:href="@{/purchase-ticket}">Purchase Ticket</a></li>
+			 -->
+			<li class="menu-item"> <a href="" th:href="@{/about-us}">About</a></li>
+				
+			<li class="menu-item"> <a href="" th:href="@{/contact-us}">Contact</a></li>
+		</ul>
+		<hr />
+	</nav>
+</body>
+</html>

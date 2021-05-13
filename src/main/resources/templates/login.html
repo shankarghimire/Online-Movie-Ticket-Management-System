@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Movie-Ticket Application::Login</title>
+<link rel="stylesheet" href="../../main.css" th:href="@{/css/main.css}" />
+<script src="../../static/js/main.js" th:src="@{/js/login.js}" defer="defer"></script>
+</head>
+<body>
+	<div class="container">
+		<header id="header-info"class="header-class" >
+			<!--  <div th:replace="fragments/header.html::header"></div>-->
+			<div >
+				<img src="../../static/images/logo/movie-logo.jpg"
+					th:src="@{/images/logo/movie-logo.jpg}" alt="Project Logo" width='80px'
+					height='80px' class="image" />
+			</div>
+			<div id="header-title">
+				<h1 class="title-heading">Online Movie-Ticket Application</h1>
+			</div>
+		</header>
+		<nav th:replace="fragments/menu.html::menu"></nav>
+		<main>
+			<div class="data-entry-form">
+				<h2>Log In Info</h2>
+				<form action="" id="form-login" th:action="@{/login}" method="post">
+					<div id="error"></div>
+					<div th:if="${param.error}">
+						<div class="alert">Invalid username or password!</div>
+					</div>
+					
+					<div th:if="${param.logout}">
+						<div class="alert ">You have been logged out.</div>
+					</div>
+					<div>
+						<label for="username">Username</label>: 
+						<input type="text"
+							id="username" 
+							name="username" 
+							autofocus="autofocus"
+							placeholder="Username" required>
+							
+					</div>
+					<div>
+						<label for="password">Password</label>: 
+						<input type="password"
+							id="password" 
+							name="password" 
+							autofocus="autofocus"
+							placeholder="Password" required>
+							
+					</div>
+					<div>
+						<input type="submit" name="login-submit" id="login-submit"
+							value="Log In">
+					</div>
+					<div>
+					<p style="text-align:center;">
+						Not Registered Yet? <a href="#" th:href="@{/register}">Register</a>
+					</p>
+					</div>
+				</form>
+			</div>
+
+
+		</main>
+	
+	</div>
+	<footer id="footer-info">
+			<div th:replace="fragments/footer.html::footer"></div>
+		</footer>
+
+</body>
+</html>

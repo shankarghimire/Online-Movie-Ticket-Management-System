@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Movie-Ticket Application::User-Dashboard</title>
+<link rel="stylesheet" href="../../static/css/main.css" th:href="@{/css/main.css}" />
+</head>
+<body>
+	<div class="container">
+		<header id="header-info">
+			<div class="header-class">
+				<div>
+					<img src="../../static/images/logo/movie-logo.jpg"
+						th:src="@{/images/logo/movie-logo.jpg}" alt="Project Logo" width='80px'
+						height='80px' class="image" />
+				</div>
+				<div id="header-title">
+					<h1>Online Movie-Ticket Application</h1>
+				</div>
+				<div sec:authorize="isAuthenticated()">
+
+					Welcome ! <span sec:authentication="name"></span> <br>
+					<!--  Roles: <span sec:authentication="principal.authorities"></span> <br>-->
+					<!-- <br> -->
+					<div>
+						<form th:action="@{/logout}" method="post">
+							<input type="submit" value="Logout" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</header>
+		<nav th:replace="/user/user-menu.html::user-menu"></nav>
+		<main>
+			<div>
+				
+				<h1>Welcome to Discount Ticket Purchase Page!</h1>
+			</div>
+				<h3>Click on the following lick to buy the tickets with special discount</h3>
+				<br />
+				<!-- 
+			<h4> <a href="" th:href="@{/user/discount-purchase}">Link to Discount Ticket</a></h4>
+			 -->
+			<h4> <a href="" th:href="@{/user/order-ticket}">Link to Discount Ticket</a></h4>
+
+		</main>
+
+
+	</div>
+			<footer id="footer-info">
+			<div th:replace="fragments/footer.html::footer"></div>
+		</footer>
+</body>
+</html>

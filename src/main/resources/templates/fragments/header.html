@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="" />
+<title></title>
+</head>
+<body>
+	<div th:fragment="header" class="header-class">
+		<div>
+			<img src="../../static/images/logo/movie-logo.jpg"
+				th:src="@{/images/logo/movie-logo.jpg}" alt="Project Logo" width='80px'
+				height='80px' class="image" />
+		</div>
+		<div id="header-title">
+			<h1 class="title-heading">Online Movie-Ticket Application</h1>
+		</div>
+		<div class="login-info">
+			<div class="input-btn" sec:authorize="!isAuthenticated()">
+				<p style="text-align:right;">
+					Already Registered? <a href="#" th:href="@{/login}"> <span style="font-weight:bold;">LogIn</span></a>
+				</p>
+				<p style="text-align:right;">
+					New User? <a href="#" th:href="@{/register}"> <span style="font-weight:bold;">Register</span> </a>
+				</p>
+			</div>
+			<div class="input-btn" sec:authorize="isAuthenticated()">
+				<p style="text-align:right; font-weight:bold;">
+					Welcome, <span sec:authentication="name"></span> <span th:text="'!'"></span>
+				</p>
+				<div>
+					<form action="" th:action="@{/logout}" method="post">
+					<input type="submit" value="Logout" />
+					</form>
+				</div>
+				<!--  
+				<p style="text-align:right;">
+					New User? <a href="#" th:href="@{/register}">Register</a>
+				</p>-->
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Movie-Ticket Application::Home</title>
+<link rel="stylesheet" href="" th:href="@{css/main.css}" />
+</head>
+<body>
+	<div class="container">
+		<header id="header-info">
+			<div th:replace="fragments/header.html::header"></div>
+		</header>
+		<nav  th:replace="fragments/menu.html::menu" >			
+		</nav>
+		<main>
+			<div class="main-content">
+			<br />
+				<h2>Make your day great by watching wonderful movie!</h2>
+				<br />
+				
+					<img src="" th:src="@{images/movie-posters/parba.jpg}" alt="image"  height="300px" width="300px"/>
+				
+			</div>
+	
+			<br /><br />
+			<!--  
+			<ul>
+				<li th:each="n: ${names}"><span th:text="${n}"></span></li>
+			</ul>
+			<div>
+			<br /><br />
+				<div th:each="n: ${names}"><p th:text="${n}"></p></div>
+			</div>
+			-->
+		</main>
+	
+
+	</div>
+	<footer id="footer-info">
+			<div th:replace="fragments/footer.html::footer"></div>
+		</footer>
+</body>
+</html>

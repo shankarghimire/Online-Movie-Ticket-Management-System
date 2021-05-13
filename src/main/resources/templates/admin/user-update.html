@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Movie-Ticket Application::User-Edit</title>
+<link rel="stylesheet" href="../../static/css/main.css"
+	th:href="@{/css/main.css}" />
+	<script src="../../../static/js/main.js" th:src="@{/js/admin-user-register.js}" defer="defer"></script>
+</head>
+<body>
+	<div class="container">
+		<header id="header-info">
+			<div class="header-class">
+				<div>
+					<img src="../../../static/images/logo/movie-logo.jpg"
+						th:src="@{/images/logo/movie-logo.jpg}" alt="Project Logo" width='80px'
+						height='80px' class="image" />
+				</div>
+				<div id="header-title">
+					<h1>Online Movie-Ticket Application</h1>
+				</div>
+				<div sec:authorize="isAuthenticated()">
+
+					Welcome ! <span sec:authentication="name"></span> <br>
+					<!--  Roles: <span sec:authentication="principal.authorities"></span> <br>-->
+					<!-- <br> -->
+					<div>
+						<form th:action="@{/logout}" method="post">
+							<input type="submit" value="Logout" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</header>
+		<nav th:replace="fragments/menu.html::menu"></nav>
+		<!--  
+		<section>
+			<nav>
+				<ul>
+					<li> <a href="" th:href="@{/admin/add-movie}"> Add Movie </a></li>
+					<li><a href="" th:href="@{/admin/edit-movie}"> Edit Movie</a></li>
+					<li><a href="" th:href="@{/admin/delete-movie}"> Delete Movie</a></li>
+				</ul>
+			</nav>
+		</section>
+		-->
+		<main class="main-admin-dashboard">
+			<!-- Sidebar -->
+			<div class="admin-sidebar">
+				<div>
+				
+				<a href="#" th:href="@{/admin/view-users}">User Configure</a>
+					<a href="#" th:href="@{/admin/view-movies}">Movie Configure</a>
+					<a href="#">Settings</a>
+					<a href="#">Lot Out</a>
+					<div class="divider"></div>
+				</div>
+			</div>
+			<!-- End of Sidebar -->
+			
+			<!-- Main content -->
+			<div class="admin-main-content">
+				<h2>Update User Registration Information</h2>
+
+				<div class="form-container">
+					<div id="error"></div>
+					<form id="registerForm" name="registerForm" action=""
+						th:action="@{/admin/update-user}" th:object="${user}" method="post">
+						<input type="hidden" name="userId" th:field="*{userId}" />
+						<input type="hidden" name="encryptedPassword" th:field="*{encryptedPassword}" />
+						<div class="form-control">
+							<label for="userName">User Name <span
+								class="mandatory-data">*</span>
+							</label> <input type="text" id="userName" name="userName"
+								th:value="${user.userName}" th:field="*{userName}" required /> <small
+								id="userNameError" class="val_error"></small>
+
+						</div>
+						<!--  
+						
+						<div class="form-control">
+							<label for="password">Password <span
+								class="mandatory-data">*</span></label> <input type="password"
+								id="password" name="encryptedPassword"  required /> <small
+								id="name_error" class="val_error"></small>
+						</div>
+						<div class="form-control">
+							<label for="confirmPassword">Confirm Password<span
+								class="mandatory-data"></span>
+							</label> <input type="password" id="confirmPassword"
+								name="confirmPassword" /> <small id="name_error"
+								class="val_error">Error Message</small>
+						</div>
+						-->
+						<div class="form-control">
+							<label for="firstName">First Name <span
+								class="mandatory-data">*</span></label> <input type="text"
+								id="firstName" name="firstName" th:value="${user.firstName}" th:field="*{firstName}"
+								required /> <small id="name_error" class="val_error">Error
+								Message</small>
+						</div>
+						<div class="form-control">
+							<label for="lastName">LastName <span
+								class="mandatory-data">*</span></label> <input type="text" id="lastName"
+								name="lastName" th:value="${user.lastName}" th:field="*{lastName}" required /> <small
+								id="name_error" class="val_error">Error Message</small>
+						</div>
+						
+						<!-- User Role -->
+							<div class="form-control">
+							<label for="lastName">User Role <span
+								class="mandatory-data">*</span></label> 
+								
+								<select name="userRole" id="userRole" th:field="*{userRole}">
+									<option value="">-Select Role-</option>
+									<option value="ROLE_ADMIN">ADMIN_ROLE</option>
+									<option value="ROLE_USER">USER_ROLE</option>
+							<!-- <option th:each="r: ${roles}" th:value="${r}" th:text="${r}"></option> -->
+								</select> 
+								
+								<small
+								id="name_error" class="val_error">Error Message</small>
+						</div>
+						
+						<!-- User Enabled Field -->
+						<div class="form-control">
+							<label for="lastName">Status <span
+								class="mandatory-data">*</span></label>
+								<input type="checkbox" id="enabled" name="enabled" th:field=*{enabled} />
+								 <!-- 
+								 <select name="userRole"
+								id="userRole" th:field="${userRole}">
+								<option value="">-Select Role-</option>
+								<option th:each="role: ${listRoles}" th:value="${role}"
+									th:text="${role}"></option>
+							</select> <small id="name_error" class="val_error">Error Message</small> -->
+							
+						</div>
+						<!-- End of User Enabled Field -->
+						
+						<!-- End of User Role -->
+						<!--  
+						<div class="form-control">
+							<div class="agreement-holder">
+								<input type="checkbox" id="agreement" name="agreement" /> <label
+									for="agreement"> Agree terms and conditions.</label>
+							</div>
+							<small id="name_error" class="val_error">Error Message</small>
+						</div>
+						-->
+						<div class="btn-holder">
+							<input type="submit" value="Update" class="data-entry-btn" /> <input
+								type="reset" value="Reset" class="data-entry-btn" />
+						</div>
+					</form>
+				</div>
+				<!-- End of form-container -->
+				
+			</div>
+			<!-- End of Main Content -->
+			
+
+
+		</main>
+	
+	</div>
+	<footer id="footer-info">
+			<div th:replace="fragments/footer.html::footer"></div>
+		</footer>
+
+</body>
+</html>

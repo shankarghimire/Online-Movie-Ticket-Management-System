@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Movie-Ticket Application::Movie</title>
+<link rel="stylesheet" href="" th:href="@{css/main.css}" />
+</head>
+<body>
+	<div class="container">
+		<header id="header-info">
+			<div th:replace="fragments/header.html::header"></div>
+		</header>
+		<nav  th:replace="fragments/menu.html::menu" >						
+		</nav>
+		<section id="movie-info">
+		<h2>Currently Showing Movies:</h2>
+		<div class="all-movie">
+			<div th:each="movie: ${movieList}" >
+				<div class="movie-details" >
+					<!--  <div th:text="${movie.imagePath}"> Image</div>-->
+					<img src="" th:with="name=${movie.imagePath}" th:src="@{images/movie-posters/ }+ '' +${name}" alt="photo" width='200px' height="200px" />
+					<div class="movie-names">
+						<h3 th:text="'Movie Title : ' + ${movie.movieName}">Name</h3>
+						<h4 th:text="'Category : ' + ${movie.movieGenre}"></h4>
+						<h4 th:text="'Show Time : ' + ${movie.showTime}"></h4>
+					</div>
+				</div>
+			</div> 
+		</div>
+				<!--  
+				<div id="movie-list">
+					<div class="movie-info">
+						<img src="" th:src="@{images/movie-posters/parba.jpg}" alt="image" height="200px" width="200px" />
+						<h2>Movie Title</h2>
+						<h3>Language</h3>
+						<h3>Show Time:</h3>
+						<h3></h3>
+					</div>
+				
+				</div>
+				
+				<h2>Movie List</h2>
+				<table border="1">
+					<tr>
+						<th>Movie Name</th>
+					</tr>
+					<tr th:each="movie : ${listMovies}">
+						<td th:text="${movie.movieName}"></td>
+					</tr>
+				</table>
+				-->				
+		</section>
+
+
+	</div>
+		<footer id="footer-info">
+			<div th:replace="fragments/footer.html::footer"></div>
+		</footer>
+
+</body>
+</html>

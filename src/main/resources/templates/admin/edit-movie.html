@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Movie-Ticket Application::Edit-Movie</title>
+<link rel="stylesheet" href="../../static/css/main.css"
+	th:href="@{/css/main.css}" />
+	<script src="../../../static/js/add-movie.js" th:src="@{/js/add-movie.js}" defer="defer"></script>
+</head>
+<body>
+	<div class="container">
+		<header id="header-info">
+			<div class="header-class">
+				<div>
+					<img src="../../../static/images/logo/movie-logo.jpg"
+						th:src="@{/images/logo/movie-logo.jpg}" alt="Project Logo" width='80px'
+						height='80px' class="image" />
+				</div>
+				<div id="header-title">
+					<h1>Online Movie-Ticket Application</h1>
+				</div>
+				<div sec:authorize="isAuthenticated()">
+
+					Welcome ! <span sec:authentication="name"></span> <br>
+					<!--  Roles: <span sec:authentication="principal.authorities"></span> <br>-->
+					<!-- <br> -->
+					<div>
+						<form th:action="@{/logout}" method="post">
+							<input type="submit" value="Logout" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</header>
+		<nav th:replace="fragments/menu.html::menu"></nav>
+		<!--  
+		<section>
+			<nav>
+				<ul>
+					<li> <a href="" th:href="@{/admin/add-movie}"> Add Movie </a></li>
+					<li><a href="" th:href="@{/admin/edit-movie}"> Edit Movie</a></li>
+					<li><a href="" th:href="@{/admin/delete-movie}"> Delete Movie</a></li>
+				</ul>
+			</nav>
+		</section>
+		-->
+		<main class="main-admin-dashboard">
+			<!-- Sidebar -->
+			<div class="admin-sidebar">
+				<div>
+				
+				<a href="#" th:href="@{/admin/view-users}">User Configure</a>
+					<a href="#" th:href="@{/admin/view-movies}">Movie Configure</a>
+					<a href="#">Settings</a>
+					<a href="#">Lot Out</a>
+					<div class="divider"></div>
+				</div>
+			</div>
+			<!-- End of Sidebar -->
+			
+			<!-- Main content -->
+			<div class="admin-main-content">
+				<h2> Add New Movie</h2>
+				<br />
+				<div>
+					<div id="error"></div>
+					<form action="" method="post" enctype="multipart/form-data" name="add-movie-form" id="add-movie-form" th:action="@{/admin/save-movie}" th:object="${movie}">
+						<!-- Movie Name -->
+						<input type="hidden" name="id" th:field="*{id}" />
+						<input type="hidden" name="imagePath" th:field="*{imagePath}" />
+						<div class="form-control">
+							<label for="movieName">Movie Name</label>
+							<input type="text" name="movieName" id="movieName" th:field="*{movieName}" />
+						</div>
+						
+						<!-- Movie Genre -->			
+						<div class="form-control">
+							<label for="movieGenre">Movie Genre</label>
+							<input type="text" name="movieGenre" id="movieGenre"  th:field="*{movieGenre}"/>
+						</div>
+						
+						<!-- Movie Language -->			
+						<div class="form-control">
+							<label for="language">Language</label>
+							<input type="text" name="language" id="language" th:field="*{language}" />
+						</div>
+						
+						<!-- Movie Show Time  -->		
+						<div class="form-control">
+							<label for="showTime">Show Time</label>
+							<select name="showTime" id="showTime" th:field="*{showTime}">
+								<option value="">-Select ShowTime-</option>
+								<option value="8:30"> 8:30</option>
+								<option value="12:30"> 12:30</option>
+								<option value="5:30"> 5:30</option>								
+							</select>
+						</div>
+						<!-- Photo upload -->
+						<br />
+						<div class="form-control">
+							
+							<input type="file" name="movieImagePath" id="imagePath" />
+						</div>
+						<div class="form-control">
+							
+							<input type="submit" value=" Edit Movie" />
+						
+						</div>
+						
+
+					</form>
+				</div>
+			
+			</div>
+			<!-- End of Main Content -->
+			
+
+
+		</main>
+	
+	</div>
+	<footer id="footer-info">
+			<div th:replace="fragments/footer.html::footer"></div>
+		</footer>
+
+</body>
+</html>

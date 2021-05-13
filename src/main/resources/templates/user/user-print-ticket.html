@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Movie-Ticket Application::User-Print-Ticket</title>
+<link rel="stylesheet" href="" th:href="@{/css/main.css}" />
+<!-- 
+<script src="../../static/js/main.js" th:src="@{/js/main.js}" defer="defer"></script>
+ -->
+</head>
+<body>
+	<div class="container">
+		<header id="header-info">
+			<div th:replace="fragments/header.html::header"></div>
+		</header>
+		<nav  th:replace="fragments/menu.html::menu" >			
+		</nav>
+		
+		<section>
+		<!-- Start Ticket Div -->
+			<div>
+				<h1>Your ticket has been confirmed!!!</h1>
+							
+				
+			</div>
+		
+			<p>Do you want to purchase another ticket?  </p>
+				<br />
+				<p> <a class="lnk-order-ticket" href="" th:href="@{/user/order-ticket}">Click Here</a></p>
+				 <br />
+				 
+	
+			
+		
+		</section> <!-- End of the section of Ticket Order -->
+
+		<section>
+			<div>
+				<h2>Your Ticket Details</h2>
+			</div>
+			
+			<div>
+				<table border="1">
+				<tr>
+					<th>Ticket#</th>
+					<th>Movie Name</th>
+					<th>Theater Name</th>
+					<th>Seat Number</th>
+					<th>Show Time</th>
+					<th>Show Date</th>
+					<th>Ticket Category</th>
+					<th>Price(CAD)</th>
+					<th>Purchased By</th>
+				</tr>
+				<tr th:each="t: ${soldTicketList}">
+					<td th:text="${t.id}"></td>
+					<td th:text="${t.movieName}"></td>
+					<td th:text="${t.theaterName}"></td>
+					<td th:text="${t.seatNo}"></td>
+					<td th:text="${t.showTime}"></td>
+					<td th:text="${t.showDate}"></td>
+					<td th:text="${t.ticketCategory}"></td>
+					<td th:text="${t.price}"></td>
+					<td th:text="${t.purchaseBy}"></td>
+				</tr>
+				
+				</table>
+			</div>	
+			<div>
+				<form action="" th:action="@{/user/print-user-ticket}">
+					<input type="submit" value="Print Ticket" />
+				</form>
+			</div>
+		</section>
+
+
+
+	</div>
+		<footer id="footer-info">
+			<div th:replace="fragments/footer.html::footer"></div>
+		</footer>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Movie-Ticket Application::Delete-Movie</title>
+<link rel="stylesheet" href="../../static/css/main.css"
+	th:href="@{/css/main.css}" />
+</head>
+<body>
+	<div class="container">
+		<header id="header-info">
+			<div class="header-class">
+				<div>
+					<img src="../../../static/images/movie-logo.jpg"
+						th:src="@{/images/logo/movie-logo.jpg}" alt="Project Logo" width='80px'
+						height='80px' class="image" />
+				</div>
+				<div id="header-title">
+					<h1>Online Movie-Ticket Application</h1>
+				</div>
+				<div sec:authorize="isAuthenticated()">
+
+					Welcome ! <span sec:authentication="name"></span> <br>
+					<!--  Roles: <span sec:authentication="principal.authorities"></span> <br>-->
+					<!-- <br> -->
+					<div>
+						<form th:action="@{/logout}" method="post">
+							<input type="submit" value="Logout" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</header>
+		<nav th:replace="fragments/menu.html::menu"></nav>
+		<section>
+			<nav>
+				<ul>
+					<li> <a href="/admin/add-movie.html" th:href="@{/admin/add-movie}"> Add Movie </a></li>
+					<li><a href="/admin/edit-movie.html" th:href="@{/admin/edit-movie}"> Edit Movie</a></li>
+					<li><a href="/admin/delete-movie.html" th:href="@{/admin/delete-movie}"> Delete Movie</a></li>
+				</ul>
+			</nav>
+		</section>
+		<main>
+			<div>
+				<h2>Welcome to Admin Page!</h2>
+				<h2>Remove the Movie from the Show</h2>
+			</div>
+
+
+		</main>
+	
+	</div>
+	<footer id="footer-info">
+			<div th:replace="fragments/footer.html::footer"></div>
+		</footer>
+
+</body>
+</html>

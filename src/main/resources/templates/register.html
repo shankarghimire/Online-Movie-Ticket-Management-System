@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Movie-Ticket Application::Register</title>
+<link rel="stylesheet" href="" th:href="@{css/main.css}" />
+<script src="../../../static/js/main.js" th:src="@{/js/register.js}" defer="defer"></script>
+</head>
+<body>
+	<div class="container">
+		<header id="header-info">
+			<div th:replace="fragments/header.html::header"></div>
+		</header>
+		<nav th:replace="fragments/menu.html::menu"></nav>
+		<section>
+		
+			<div class="data-entry-form">
+				<div class="form-header">
+					<h1>New Registration</h1>
+				</div>
+				<div id="error"></div>
+				<form id="registerForm" name="registerForm" action="" th:action="@{do-register}" th:object="${user}"
+					method="post">
+					<div class="form-control">
+						<label for="userName">User Name <span
+							class="mandatory-data">*</span>
+						</label> <input type="text" id="userName" name="userName"
+							th:value="${user.userName}" required />
+							
+							<small id="userNameError" class="val_error"></small>
+							
+					</div>
+					<div class="form-control">
+						<label for="password">Password <span
+							class="mandatory-data">*</span></label> <input type="password"
+							id="password" name="encryptedPassword" required />
+							<small id="name_error" class="val_error"></small>
+					</div>
+					<div class="form-control">
+						<label for="confirmPassword">Confirm Password<span
+							class="mandatory-data"></span>
+						</label> <input type="password" id="confirmPassword"
+							name="confirmPassword" />
+							<small id="name_error" class="val_error">Error Message</small>
+					</div>
+					<div class="form-control">
+						<label for="firstName">First Name <span
+							class="mandatory-data">*</span></label> <input type="text" id="firstName"
+							name="firstName" th:value="${user.firstName}" required />
+							<small id="name_error" class="val_error">Error Message</small>
+					</div>
+					<div class="form-control">
+						<label for="lastName">LastName <span
+							class="mandatory-data">*</span></label> <input type="text" id="lastName"
+							name="lastName" th:value="${user.lastName}" required />
+							<small id="name_error" class="val_error">Error Message</small>
+					</div>
+					<div class="form-control">
+						<div class="agreement-holder">
+							<input type="checkbox" id="agreement" name="agreement" /> <label
+								for="agreement"> Agree terms and conditions.</label>
+						</div>
+						<small id="name_error" class="val_error">Error Message</small>
+					</div>
+					<div class="btn-holder">
+						<input type="submit" value="Submit" class="data-entry-btn" /> <input
+							type="reset" value="Reset" class="data-entry-btn" />
+					</div>
+				</form>
+				<p style="text-align:right;">
+					Already Registered? <a href="#" th:href="@{/login}"> <span style="font-weight:bold;">LogIn</span></a>
+				</p>
+			</div>
+		</section>
+		<section>
+		<br /><br /><br /><br /><br /><br /><br /><br />
+		</section>
+	
+
+	</div>
+	<footer id="footer-info">
+			<div th:replace="fragments/footer.html::footer"></div>
+	</footer>
+	<!-- 
+	<script type="text/javascript">
+		//Getting all input fields of the form
+		var userName = document.forms["registerForm"]["userName"];
+		
+		//Getting all error display elements
+		var userNameError = document.getElementById("userNameError");
+		
+		//Setting all Event listeners
+		
+		userName.addEventListener("blur", userNameVerify,true);
+		
+		//validation function
+		function isValidate(){
+			//validating user name
+			let userNameVal = userName.value;
+			if(userNameVal === ""){
+				userName.style.border="1px solid red";
+				userNameError.textContent = "User Name is required!";
+				userName.focus();
+				 return false;
+			}else if(userNameVal.length <3){
+				userName.style.border="1px solid red";
+				userNameError.textContent = "User Name must be minimum 3 characters long!";
+				userName.focus();
+				 return false;
+			}
+			else{
+				userNameError.textContent = "";
+			}
+			
+			return true;
+		}
+		
+		
+		
+	</script>
+	 -->
+</body>
+</html>

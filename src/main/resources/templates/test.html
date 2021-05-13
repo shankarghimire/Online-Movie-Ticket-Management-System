@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>Movie-Ticket Application::Home</title>
+<link rel="stylesheet" href="" th:href="@{/css/main.css}" />
+<script src="../../static/js/main.js" th:src="@{/js/main.js}" defer="defer"></script>
+</head>
+<body>
+	<div class="container">
+		<header id="header-info">
+			<div th:replace="fragments/header.html::header"></div>
+		</header>
+		<nav  th:replace="fragments/menu.html::menu" >			
+		</nav>
+		
+		<section class="main-section">
+		<!-- Start Ticket Div -->
+			<div  class="ticket ticket-box">
+				<h1>Fill up the following information to buy tickets</h1>
+				
+				<!-- <form id="ticket-form" action="" th:action="@{/process-ticket}" th:object="${ticket}" method="post"> -->
+				<form id="ticket-form" action="" th:action="@{/process-ticket}"  method="post">
+				<div id="error"></div>
+					<div class="ticket ticket-elements">
+						<label class="ticket ticket-element" for="show-date">Select Date to see movie </label>
+						<input type="datetime-local" id="showdate" class="ticket ticket-element"  name="showdate" min="2020-01-01" max="2020-12-31"  />
+					</div> <!-- End of ShowDate div -->
+					
+					<div class="ticket ticket-elements">
+						<label class="ticket ticket-element" for="movieName">Select Movie Name</label> 
+						<select
+							id="movie-name" class="ticket ticket-element" >
+							<option value="">-Select Movie-</option>
+							<option th:each="m: ${movieNames}" th:value="${m}" th:text="${m}"></option>
+						</select>
+					</div>
+					
+					<div class="ticket ticket-elements">
+						<label class="ticket ticket-element" for="movieName">Select Theater Name</label> 
+						<select
+							id="theater-name" class="ticket ticket-element" >
+							<option value="">-Select Theater-</option>
+							<option value="Sheridan Mulplex Theater">Sheridan Mulplex Theater</option> 
+						</select>
+					</div>
+					<div class="ticket ticket-elements">
+						<label class="ticket ticket-element" for="seat-number">Select Seat Number</label>
+						<select id="seat-number" class="ticket ticket-element" >
+							<option value="">-Select Seat-</option>
+							<option th:each="s: ${availableSeats}" th:value="${s}" th:text="${s}"></option>
+						</select>
+					</div> <!-- End of Seat-number div -->
+					
+					<!-- Show time -->
+					<div class="ticket ticket-elements">
+						<label class="ticket ticket-element" for="Show Time">Show Time</label>
+						<input type="text" id="showtime" name="showtime"  class="ticket ticket-element"  />
+					</div> <!-- End of show-time div-->
+					
+					
+				
+					
+					<!-- Start of Ticket-Category div -->
+					<div class="ticket ticket-elements">
+						<label class="ticket ticket-element" for="seat-number">Ticket Category</label>
+						<select id="ticket-category" class="ticket ticket-element" >
+							<option value="">-Select Category-</option>
+							<option th:each="tc: ${ticketCategory}" th:value="${tc}" th:text="${tc}"></option>
+						</select>
+					</div> <!-- End of Ticket Category div -->
+					
+						<!-- Price -->
+					<div class="ticket ticket-elements">
+						<label class="ticket ticket-element" for="price">Price</label>
+						<input type="number" id="price" name="price"  class="ticket ticket-element"/>
+					</div> <!-- End of price div-->
+					
+					<!-- Start of button holder div -->
+					<div>
+						<input type="submit" value="Confirm Ticket" id="btn-confirm-ticket"/>
+						<input type="reset" value="Reset" />
+					</div>
+					<!-- End of Button div -->
+				</form>
+			</div>
+			<!-- End of Ticket Div -->
+
+			<!-- Starting Seat and other info Div -->
+			<div class="class-info">
+				<div class="seat-box">
+					<h2>Available Seats</h2>
+					<hr style="width:40%;" />
+					<div>
+						<div th:each="seat: ${availableSeats}"
+							class="class-available-seats">
+							<div class="class-seat">
+								<span th:text="${seat}"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End os Seat Div -->
+				
+				<div class="movie-and-ticket-info">
+					<h3>Available Movies &amp; Show Time</h3>
+					<ul>
+						<li>Titanic- 8:30AM </li>
+						<li>Avatar- 12:30PM</li>
+						<li>Parba- 5:30PM</li>
+					</ul>
+					<h3>Ticket Category &amp; Price</h3>
+					<ul>
+						<li>General Admission:&nbsp; $15:00</li>
+						<li>Sheridan College Students: &nbsp; $10:00</li>
+						<li>PROG 32758 Students: &nbsp; $15:00</li>
+						<li>Senior Citezen: &nbsp; $5:00</li>
+						<li>Children: &nbsp; $5:00</li>
+					</ul>
+				</div>
+			</div>
+			<!-- End of class-info Div -->
+		</section> <!-- End of the section of Ticket Order -->
+
+		<section>
+			<div>
+				<h2>Ticket Details</h2>
+			</div>
+			
+			<div>
+				<table border="1">
+				<tr>
+					<th>Movie Name</th>
+					<th>Theater Name</th>
+					<th>Seat Number</th>
+					<th>Show Time</th>
+					<th>Show Date</th>
+					<th>Ticket Category</th>
+					<th>Price(CAD)</th>
+				</tr>
+				<tr th:each="t: ${soldTicketList}">
+					<td th:text="${t.movieName}"></td>
+					<td th:text="${t.theaterName}"></td>
+					<td th:text="${t.seatNo}"></td>
+					<td th:text="${t.showTime}"></td>
+					<td th:text="${t.showDate}"></td>
+					<td th:text="${t.ticketCategory}"></td>
+					<td th:text="${t.price}"></td>
+				</tr>
+				
+				</table>
+			</div>
+
+		</section>
+
+
+
+	</div>
+		<footer id="footer-info">
+			<div th:replace="fragments/footer.html::footer"></div>
+		</footer>
+</body>
+</html>
